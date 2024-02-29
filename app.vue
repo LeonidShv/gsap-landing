@@ -1,5 +1,4 @@
 <template>
-  <header class="p-h-3">nav</header>
   <main class="p-h-3">
     <NuxtPage />
   </main>
