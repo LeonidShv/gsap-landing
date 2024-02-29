@@ -6,8 +6,7 @@
   font-family: "SuisseIntl-Regular";
   src:
     url("@/assets/fonts/SuisseIntl-Regular.woff2") format("woff2"),
-    /* Сучасний формат */ url("@/assets/fonts/SuisseIntl-Regular.woff")
-      format("woff"); /* Старіший формат для сумісності */
+    url("@/assets/fonts/SuisseIntl-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
