@@ -13,7 +13,7 @@
       </template>
 
       <a class="error-link" @click="handleError">
-        <VButton> Go home </VButton>
+        <button>Go home</button>
       </a>
     </div>
   </section>

@@ -1,11 +1,3 @@
-## Task manager
-
-`https://trello.com/b/OjZu7TVB/un-environment`
-
-## Open data
-
-`https://data.un.org/SdmxBrowser/start`
-
 ## Bundle analyze
 
 npx nuxi analyze
