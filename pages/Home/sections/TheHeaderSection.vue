@@ -10,7 +10,7 @@
 
     <VSlider :slides="slides" />
   </header>
-  <VNavigation style="background-color: yellow;" />
+  <VNavigation style="background-color: yellow" />
 </template>
 
 <script setup>
@@ -19,7 +19,7 @@ import { ref } from "vue";
 const slides = ref([
   {
     src: "/_nuxt/assets/images/header1.jpg",
-    alt: "team for slide, first item"
-  }
+    alt: "team for slide, first item",
+  },
 ]);
 </script>

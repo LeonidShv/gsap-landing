@@ -1,5 +1,5 @@
 <template>
-  <div :style="{width: width}">
+  <div :style="{ width: width }">
     <p>
       {{ label }}
     </p>
@@ -13,10 +13,8 @@
 defineProps({
   label: String,
   rate: String,
-  width: String
-})
+  width: String,
+});
 </script>
 
-<style lang="scss" scoped>
-  
-</style>
+<style lang="scss" scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <GraphicHorizontalItem
-    v-for="{labe, rate, width} in graphicHorizontalItems"
+    v-for="{ labe, rate, width } in graphicHorizontalItems"
     :labe="labe"
     :rate="rate"
     :width="width"
@@ -12,5 +12,5 @@ import GraphicHorizontalItem from "@/pages/Home/components/GraphicHorizontal/Gra
 
 defineProps({
   graphicHorizontalItems: Array,
-})
+});
 </script>

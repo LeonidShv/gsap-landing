@@ -11,13 +11,8 @@
       <li>Contacts</li>
     </ul>
 
-    <VButton
-      label="Book a call"
-      to="#"
-    >
-     <template #left>
-      icon
-     </template>
+    <VButton label="Book a call" to="#">
+      <template #left> icon </template>
     </VButton>
-  </nav> 
+  </nav>
 </template>

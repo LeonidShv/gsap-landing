@@ -9,13 +9,13 @@
 <script setup>
 defineProps({
   label: String,
-  to: String
-})
+  to: String,
+});
 </script>
 
 <style lang="scss" scoped>
-  .button__link {
-    background: red;
-    color: #fff;
-  }
+.button__link {
+  background: red;
+  color: #fff;
+}
 </style>

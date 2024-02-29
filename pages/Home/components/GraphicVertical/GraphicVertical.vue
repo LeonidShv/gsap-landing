@@ -1,6 +1,6 @@
 <template>
   <GraphicVerticalItem
-    v-for="{rate, height} in graphicVerticalItems"
+    v-for="{ rate, height } in graphicVerticalItems"
     :rate="rate"
     :height="height"
   />
@@ -11,5 +11,5 @@ import GraphicVerticalItem from "@/pages/Home/components/GraphicVertical/Graphic
 
 defineProps({
   graphicVerticalItems: Array,
-})
+});
 </script>

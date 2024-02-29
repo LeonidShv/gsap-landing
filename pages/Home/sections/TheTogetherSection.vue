@@ -1,12 +1,7 @@
 <template>
   <section>
-    <h2>
-      Let's fight cold together
-    </h2>
-    <p>
-      We generated leads from 
-top-performing companies
-    </p>
+    <h2>Let's fight cold together</h2>
+    <p>We generated leads from top-performing companies</p>
 
     <div>
       <div v-for="{ companyIcon } in companies">
@@ -19,19 +14,19 @@ top-performing companies
 <script setup>
 const companies = ref([
   {
-    companyIcon: 'companies/sap'
+    companyIcon: "companies/sap",
   },
   {
-    companyIcon: 'companies/bayer'
+    companyIcon: "companies/bayer",
   },
   {
-    companyIcon: 'companies/office'
+    companyIcon: "companies/office",
   },
   {
-    companyIcon: 'companies/salesforce'
+    companyIcon: "companies/salesforce",
   },
   {
-    companyIcon: 'companies/hp'
-  }
-])
+    companyIcon: "companies/hp",
+  },
+]);
 </script>
