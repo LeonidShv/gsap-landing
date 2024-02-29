@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true,
+  },
+  "parser": "vue-eslint-parser",
+  "extends": ["plugin:prettier/recommended"],
+  "plugins": [],
+  "rules": {
+    "vue/no-multiple-template-root": "off",
+    "vue/attribute-hyphenation": "off",
+  }
+}
