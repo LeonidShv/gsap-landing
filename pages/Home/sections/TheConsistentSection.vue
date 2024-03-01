@@ -3,7 +3,7 @@
     <h2 class="consistent__title font-s-small-title c--dark">
       Consitent leads flow to streamline Your business growth.
     </h2>
-    <div class="consistent__graphic-wrapper">
+    <div class="consistent__graphic-vertical">
       <p class="consistent__text font-s-base c--dark">
         We combine disruptive marketing techniques with proven tech solutions to
         provide maximum business value.
@@ -11,9 +11,10 @@
 
       <GraphicVertical :graphicVerticalItems="graphicVerticalItems" />
     </div>
-  </section>
-  <section>
-    <GraphicHorizontal :graphicHorizontalItems="graphicHorizontalItems" />
+
+    <div class="consistent__graphic-horizontal">
+      <GraphicHorizontal :graphicHorizontalItems="graphicHorizontalItems" />
+    </div>
   </section>
 </template>
 
@@ -85,31 +86,35 @@ const graphicHorizontalItems = ref([
     rate: "1570",
     width: "0.9",
     label: "Revenue generated for clients",
+    isLeftContent: false,
   },
   {
     rate: "1200",
     width: "0.5",
     label: "Conversationd opened",
+    isLeftContent: true,
   },
   {
     rate: "378",
     width: "0.8",
     label: "Leads generated via targeted",
+    isLeftContent: true,
   },
   {
     rate: "197",
     width: "0.4",
     label: "Calls scheduled for clients",
+    isLeftContent: true,
   },
 ]);
 </script>
 
 <style scoped lang="scss">
 .consistent {
-  height: 100vh;
+  height: calc(100vh + 341px);
   padding: 20px 20px 0;
 
-  &__graphic-wrapper {
+  &__graphic-vertical {
     position: relative;
     height: calc(100vh - 341px);
   }
@@ -124,6 +129,10 @@ const graphicHorizontalItems = ref([
     top: 0;
     left: 0;
     width: 580px;
+  }
+
+  &__graphic-horizontal {
+    margin-top: 1px;
   }
 }
 </style>
