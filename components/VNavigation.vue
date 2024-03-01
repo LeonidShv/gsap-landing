@@ -48,6 +48,10 @@ defineProps({
   &__item {
     &--offset {
       margin-left: 232px;
+
+      @media (max-width: 1600px) {
+        margin-left: 100px;
+      }
     }
   }
 
@@ -60,7 +64,7 @@ defineProps({
     gap: 60px;
     margin-left: 8px;
 
-    @media (max-width: 1500px) {
+    @media (max-width: 1600px) {
       gap: 36px;
     }
   }
@@ -69,6 +73,10 @@ defineProps({
     padding-left: 80px;
     padding-right: 18px;
     margin-left: 118px;
+
+    @media (max-width: 1600px) {
+      margin-left: 40px;
+    }
   }
 
   &__button-icon {

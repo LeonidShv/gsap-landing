@@ -22,6 +22,7 @@ body {
 
 body {
   scroll-behavior: smooth;
+  font-weight: 400;
 }
 
 .router-view {
@@ -60,30 +61,43 @@ body {
 
 .font-s-logo {
   font-size: var(--font-size-logo);
+  font-weight: 400;
 }
 .font-s-base {
   font-size: var(--font-size-base);
+  font-weight: 400;
 }
 .font-s-small {
   font-size: var(--font-size-small);
+  font-weight: 400;
 }
 .font-s-big-title {
   font-size: var(--font-size-big-title);
+  font-weight: 400;
+
+  @media (max-width: 1600px) {
+    font-size: var(--font-size-mid-title);
+  }
 }
 .font-s-small-title {
   font-size: var(--font-size-small-title);
+  font-weight: 400;
 }
 .font-s-mid-title {
   font-size: var(--font-size-mid-title);
+  font-weight: 400;
 }
 .font-s-sub-title {
   font-size: var(--font-size-sub-title);
+  font-weight: 400;
 }
 .font-s-block-title {
   font-size: var(--font-size-block-title);
+  font-weight: 400;
 }
 .font-s-item {
   font-size: var(--font-size-item);
+  font-weight: 400;
 }
 
 .bg--red {
