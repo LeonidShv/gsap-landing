@@ -85,3 +85,39 @@ body {
 .font-s-item {
   font-size: var(--font-size-item);
 }
+
+.bg--red {
+  background: var(--red);
+}
+
+.bg--dark {
+  background: var(--dark);
+}
+
+.bg--light {
+  background: var(--light);
+}
+
+.bg--grey {
+  background: var(--grey);
+}
+
+.c--red {
+  color: var(--red);
+}
+
+.c--dark {
+  color: var(--dark);
+}
+
+.c--light {
+  color: var(--light);
+}
+
+.c--grey {
+  color: var(--grey);
+}
+
+.p-20 {
+  padding: 20px;
+}

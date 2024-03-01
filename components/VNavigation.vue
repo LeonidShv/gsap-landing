@@ -1,18 +1,80 @@
 <template>
-  <nav class="navigation">
-    <p>Logo.svg</p>
-    <ul class="navigation__list">
-      <li>Services</li>
-      <li>Case Studies</li>
-      <li>Blog</li>
-      <li>About us</li>
-
-      <li>We're hiring</li>
-      <li>Contacts</li>
+  <nav class="navigation d-flex p-20 bg--red">
+    <nuxt-icon name="logo" class="navigation__logo" filled />
+    <ul class="navigation__list d-flex">
+      <li
+        v-for="({ label, url, offset }, i) in navigation"
+        :key="i"
+        class="navigation__item"
+      >
+        <a
+          class="navigation__link font-s-base"
+          :class="{ 'navigation__item--offset': offset }"
+          :href="url"
+        >
+          {{ label }}
+        </a>
+      </li>
     </ul>
 
-    <VButton label="Book a call" to="#">
-      <template #left> icon </template>
+    <VButton
+      class="navigation__button bg--dark c--light"
+      label="Book a call"
+      to="#"
+    >
+      <template #left>
+        <nuxt-icon name="arrow" class="navigation__button-icon" filled />
+      </template>
     </VButton>
   </nav>
 </template>
+
+<script setup>
+defineProps({
+  navigation: Array,
+});
+</script>
+
+<style lang="scss" scoped>
+.navigation {
+  height: 87px;
+
+  &__logo {
+    width: 51px;
+    height: 51px;
+    margin-right: auto;
+  }
+
+  &__item {
+    &--offset {
+      margin-left: 232px;
+    }
+  }
+
+  &__link {
+    color: var(--dark);
+    line-height: 47px;
+  }
+
+  &__list {
+    gap: 60px;
+    margin-left: 8px;
+
+    @media (max-width: 1500px) {
+      gap: 36px;
+    }
+  }
+
+  &__button {
+    padding-left: 80px;
+    padding-right: 18px;
+    margin-left: 118px;
+  }
+
+  &__button-icon {
+    display: block;
+    width: 20px;
+    height: 11px;
+  }
+}
+</style>

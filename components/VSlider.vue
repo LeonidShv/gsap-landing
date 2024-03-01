@@ -1,5 +1,5 @@
 <template>
-  <img v-for="{ src, alt } in slides" :src="src" :alt="alt" />
+  <img class="slide" v-for="{ src, alt } in slides" :src="src" :alt="alt" />
 </template>
 
 <script setup>
@@ -8,4 +8,10 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.slide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+</style>

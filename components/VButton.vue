@@ -1,7 +1,7 @@
 <template>
-  <NuxtLink :to="to" class="button__link">
+  <NuxtLink :to="to" class="button d-flex justify-s-b">
     <slot name="left" />
-    {{ label }}
+    <span class="font-s-base c--red">{{ label }}</span>
     <slot name="right" />
   </NuxtLink>
 </template>
@@ -14,8 +14,8 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-.button__link {
-  background: red;
-  color: #fff;
+.button {
+  line-height: 51px;
+  gap: 55px;
 }
 </style>

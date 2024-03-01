@@ -9,7 +9,7 @@
     </p>
 
     <div>
-      <div style="background: red">
+      <div>
         <p>1</p>
         <h3>B2B Marketing</h3>
 
