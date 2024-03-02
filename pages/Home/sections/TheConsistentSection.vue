@@ -111,7 +111,7 @@ const graphicHorizontalItems = ref([
 
 <style scoped lang="scss">
 .consistent {
-  height: calc(100vh + 341px);
+  height: calc(100vh + 375px);
   padding: 20px 20px 0;
 
   &__graphic-vertical {

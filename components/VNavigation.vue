@@ -17,11 +17,7 @@
       </li>
     </ul>
 
-    <VButton
-      class="navigation__button bg--dark c--light"
-      label="Book a call"
-      to="#"
-    >
+    <VButton class="navigation__button" type="dark" label="Book a call" to="#">
       <template #left>
         <nuxt-icon name="arrow" class="navigation__button-icon" filled />
       </template>
@@ -71,18 +67,12 @@ defineProps({
 
   &__button {
     padding-left: 80px;
-    padding-right: 18px;
     margin-left: 118px;
+    width: 330px;
 
     @media (max-width: 1600px) {
       margin-left: 40px;
     }
-  }
-
-  &__button-icon {
-    display: block;
-    width: 20px;
-    height: 11px;
   }
 }
 </style>
