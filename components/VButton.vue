@@ -1,8 +1,11 @@
 <template>
-  <NuxtLink :to="to" class="button__link">
-    <slot name="left" />
+  <NuxtLink
+    :to="to"
+    :class="[type]"
+    class="button d-flex justify-s-b font-s-base"
+  >
+    <nuxt-icon name="arrow" class="button-icon" filled />
     {{ label }}
-    <slot name="right" />
   </NuxtLink>
 </template>
 
@@ -10,12 +13,44 @@
 defineProps({
   label: String,
   to: String,
+  type: String,
 });
 </script>
 
 <style lang="scss" scoped>
-.button__link {
-  background: red;
-  color: #fff;
+.button {
+  height: 55px;
+  line-height: 55px;
+  gap: 55px;
+  width: fit-content;
+  padding: 0 18px;
+
+  span {
+    line-height: 55px;
+  }
+
+  &-icon {
+    display: block;
+    width: 20px;
+    height: 11px;
+  }
+}
+
+.dark.button {
+  background: var(--dark);
+  color: var(--red);
+
+  :deep(path) {
+    fill: var(--red);
+  }
+}
+
+.red.button {
+  background: var(--red);
+  color: var(--dark);
+
+  :deep(path) {
+    fill: var(--dark);
+  }
 }
 </style>
