@@ -1,30 +1,9 @@
 <template>
   <main class="p-h-3">
+    <!-- <VPreloader /> -->
     <NuxtPage />
   </main>
 </template>
-
-<script setup>
-import { ref } from "vue";
-
-// const navigation = ref([
-//   {
-//     path: "/",
-//     label: "Information",
-//     disabled: false,
-//   },
-//   {
-//     path: "/",
-//     label: "Cases",
-//     disabled: false,
-//   },
-//   {
-//     path: "/",
-//     label: "Conclusions",
-//     disabled: true,
-//   },
-// ]);
-</script>
 
 <style lang="scss">
 @import "./assets/styles/main.scss";

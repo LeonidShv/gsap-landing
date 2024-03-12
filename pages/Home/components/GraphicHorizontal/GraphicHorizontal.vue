@@ -30,12 +30,32 @@
       />
     </div>
   </div>
+
+
+  <!-- <div class="wrapper-box">
+      <div class="box">1</div>
+      <div class="box">2</div>
+      <div class="box">3</div>
+      <div class="box">4</div>
+      <div class="box">5</div>
+    </div> -->
 </template>
 
 <script setup>
+import gsap from 'gsap-trial';
+
 defineProps({
   graphicHorizontalItems: Array,
 });
+
+// onMounted(() => {
+//   const tl = gsap.timeline();
+//   tl.to(".box", {
+//     scaleX: 1,
+//     duration: .5,
+//     stagger: 0.1
+//   })
+// });
 </script>
 
 <style lang="scss" scoped>
@@ -75,4 +95,21 @@ defineProps({
     transform-origin: right;
   }
 }
+
+
+// .wrapper-box {
+//   background: green;
+//   width: 500px;
+//   height: 510px;
+// }
+
+// .box {
+//   transform: scaleX(0);
+//   margin-bottom: 1px;
+//   background: blue;
+//   width: 500px;
+//   height: 100px;
+//   border: 1px solid white;
+//   transform-origin: left center;
+// }
 </style>

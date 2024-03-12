@@ -96,6 +96,9 @@ const trustedCards = ref([
 
 <style scoped lang="scss">
 .trusted {
+  // TODO: hidden
+  background: #fff;
+  overflow: hidden;
   flex-direction: column;
   margin-top: 112px;
 

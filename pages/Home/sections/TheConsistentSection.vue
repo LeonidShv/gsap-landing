@@ -113,6 +113,7 @@ const graphicHorizontalItems = ref([
 .consistent {
   height: calc(100vh + 375px);
   padding: 20px 20px 0;
+  background: #fff;
 
   &__graphic-vertical {
     position: relative;

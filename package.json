@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint:js": "eslint --ext \".ts,.vue\"",
+    "lint:js": "eslint --ext \".vue\"",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
     "lintfix": "prettier --write --list-different . && npm run lint:js --fix"
@@ -24,6 +24,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "gsap-trial": "^3.12.5",
     "nuxt-icons": "^3.2.1",
     "vue3-lottie": "^3.2.0"
   }
