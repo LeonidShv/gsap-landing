@@ -1,24 +1,25 @@
 <template>
-  <div class="preloader" ref="preloader">
-    <p class="preloader__progress" ref="preloaderProgress" />
+  <div class="preloader" data-gsap-preloader>
+    <p class="preloader__progress" data-gsap-preloader-progress />
   </div>
+
   <header class="preloader__logo-wrapper d-flex justify-s-b p-20">
     <div>
       <p
-        ref="logoRespect"
+        data-gsap-logo-respect
         class="preloader__logo preloader__logo--default font-s-item c--red"
       >
         Respect
       </p>
       <p
-        ref="logoStudio"
+        data-gsap-logo-studio
         class="preloader__logo preloader__logo--rotate font-s-item c--red"
       >
         Studio
       </p>
     </div>
-    <p 
-      ref="companyName"
+    <p
+      data-gsap-company-name
       class="preloader__company-name font-s-logo c--red"
     >
       Digital Marketing Agency
@@ -27,16 +28,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
-import gsap from 'gsagsap-trialp';
-import { TextPlugin } from 'gsap-trial/TextPlugin';
-gsap.registerPlugin(TextPlugin);
+import { onMounted } from 'vue'
 
-const preloader = ref(null);
-const preloaderProgress = ref(null);
-const logoRespect = ref(null);
-const logoStudio = ref(null);
-const companyName = ref(null);
+const { gsap, TextPlugin } = useGsap()
 
 const progressNumbers = [
   {
@@ -67,41 +61,47 @@ const progressNumbers = [
     text: '',
     duration: 0
   }
-];
+]
 
 onMounted(async () => {
   document.body.style.overflow = 'hidden'
   const tl = gsap.timeline()
 
   for (const { text, duration } of progressNumbers) {
-    await tl.to(preloaderProgress.value, { duration, text })
+    await tl.to('[data-gsap-preloader-progress]', { duration, text })
   }
 
-  tl.to(logoRespect.value, { duration: 0, text: '', opacity: 1 })
-    .to(logoStudio.value, {
+  tl.to('[data-gsap-logo-respect]', { duration: 0, text: '', opacity: 1 }).to(
+    '[data-gsap-logo-studio]',
+    {
       duration: 0,
       text: '',
-      opacity: 1 
-    })
+      opacity: 1
+    }
+  )
 
-  tl.to(logoRespect.value, { duration: 1, text: 'Respect' })
-    .to(
-      logoStudio.value,
-      { duration: 1, text: 'Studio' },
-      '-=0.8'
-    )
+  tl.to('[data-gsap-logo-respect]', { duration: 1, text: 'Respect' }).to(
+    '[data-gsap-logo-studio]',
+    { duration: 1, text: 'Studio' },
+    '-=0.8'
+  )
 
-  tl.to(preloader.value, { duration: 0.5, yPercent: -100 })
+  tl.to('[data-gsap-preloader]', { duration: 0.5, yPercent: -100 })
 
-  tl.to(companyName.value, { duration: 0.2, opacity: 1}, "-=0.2")
+  tl.to('[data-gsap-company-name]', { duration: 0.2, opacity: 1 }, '-=0.2')
 
   document.body.style.overflow = 'auto'
+
+  tl.to('[data-gsap-logo-respect]', { duration: 0, opacity: 0 })
+    .to('[data-gsap-logo-studio]', { duration: 0, opacity: 0 })
+    .to('[data-gsap-company-name]', { duration: 0, opacity: 0 })
 })
 </script>
 
 <style scoped lang="scss">
 .preloader {
   position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
   height: 100vh;
@@ -117,6 +117,8 @@ onMounted(async () => {
     font-size: 230px;
     box-shadow: rgba(0, 0, 0, 0.25);
   }
+
+  /* TODO: DRY */
 
   &__logo-wrapper {
     width: 100%;
@@ -135,7 +137,7 @@ onMounted(async () => {
     top: 82px;
 
     &::before {
-      content: ".";
+      content: '.';
       font-size: var(--font-s-item);
       position: absolute;
       top: -10px;

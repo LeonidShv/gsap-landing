@@ -33,7 +33,7 @@ defineProps({
 
 <style lang="scss" scoped>
 .navigation {
-  height: 87px;
+  height: 86px;
 
   &__logo {
     width: 51px;

@@ -1,6 +1,5 @@
 <template>
   <main class="p-h-3">
-    <!-- <VPreloader /> -->
     <NuxtPage />
   </main>
 </template>

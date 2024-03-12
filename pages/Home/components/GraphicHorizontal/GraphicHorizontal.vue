@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import gsap from 'gsap-trial';
+const { gsap } = useGsap()
 
 defineProps({
   graphicHorizontalItems: Array,

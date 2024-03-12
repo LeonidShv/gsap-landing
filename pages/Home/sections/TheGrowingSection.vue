@@ -1,6 +1,6 @@
 <template>
   <section class="growing bg--red p-20 d-flex justify-s-b">
-    <h1 ref="growingTitle" class="growing__title c--dark font-s-big-title">
+    <h1 data-gsap-growing-title class="growing__title c--dark font-s-big-title">
       <span
         :data-gsap="`growing-title-${i}`"
         v-for="({ text }, i) in growingTitleText"
@@ -9,7 +9,7 @@
         {{ text }}
       </span>
     </h1>
-    <p ref="growingText" class="growing__text c--dark font-s-base">
+    <p data-gsap-growing-text class="growing__text c--dark font-s-base">
       B2B Marketing & LinkedIn Lead Generation agency
     </p>
   </section>
@@ -17,12 +17,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import gsap from 'gsap-trial'
-import { TextPlugin } from 'gsap-trial/TextPlugin'
-import { ScrollTrigger } from 'gsap-trial/ScrollTrigger'
 
-gsap.registerPlugin(TextPlugin, ScrollTrigger)
-// gsap.registerPlugin(ScrollTrigger);
+const { gsap, TextPlugin, ScrollTrigger } = useGsap()
 
 const growingTitleText = ref([
   {
@@ -47,20 +43,11 @@ const growingTitleText = ref([
   }
 ])
 
-const growingText = ref(null)
-const growingTitle = ref(null)
-
-
 onMounted(async () => {
-  // tlSetion.to(growingSection.value, {
-  //   yPercent: -50,
-  //   duration: 1
-  // })
-
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: growingTitle.value,
-      start: 'center center'
+      trigger: '[data-gsap-growing-title]',
+      start: '200'
     }
   })
 
@@ -82,7 +69,7 @@ onMounted(async () => {
   }
 
   tl.to(
-    growingText.value,
+    '[data-gsap-growing-text]',
     {
       opacity: 1,
       duration: 0.3
@@ -98,7 +85,6 @@ onMounted(async () => {
   height: calc(100vh - 87px);
 
   &__title {
-    // text-align: end;
     margin-left: auto;
     width: 800px;
     min-width: 800px;
