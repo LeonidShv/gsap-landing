@@ -24,6 +24,7 @@ defineProps({
   gap: 55px;
   width: fit-content;
   padding: 0 18px;
+  cursor: pointer;
 
   span {
     line-height: 55px;

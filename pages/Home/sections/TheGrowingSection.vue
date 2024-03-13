@@ -26,12 +26,8 @@ const growingTitleText = ref([
     duration: '0.4'
   },
   {
-    text: 'businesses',
+    text: 'businesses by',
     duration: '0.5'
-  },
-  {
-    text: 'by',
-    duration: '0.2'
   },
   {
     text: 'building',
@@ -64,7 +60,7 @@ onMounted(async () => {
 
     tl.to(`[data-gsap="growing-title-${i}"]`, {
       duration,
-      text
+      text,
     })
   }
 
@@ -86,7 +82,7 @@ onMounted(async () => {
 
   &__title {
     margin-left: auto;
-    width: 800px;
+    width: 900px;
     min-width: 800px;
     margin-top: 54px;
     display: flex;
@@ -94,7 +90,24 @@ onMounted(async () => {
     align-items: flex-end;
 
     span {
+      // width: 100%;
       opacity: 0;
+
+      &:nth-of-type(1) {
+        width: 520px;
+      }
+
+      &:nth-of-type(2) {
+        width: 900px;
+      }
+
+      &:nth-of-type(3) {
+        width: 494px;
+      }
+
+      &:nth-of-type(4) {
+        width: 800px;
+      }
     }
   }
 
