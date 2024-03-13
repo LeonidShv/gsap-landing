@@ -30,32 +30,34 @@
 <script setup>
 import { onMounted } from 'vue'
 
+const emit = defineEmits(['onFinishPreloader', 'onFinishPreloaderTextTyping'])
+
 const { gsap, TextPlugin } = useGsap()
 
 const progressNumbers = [
   {
     text: '04',
-    duration: 0.4
+    duration: 0.3
   },
   {
     text: '19',
-    duration: 0.4
+    duration: 0.3
   },
   {
     text: '23',
-    duration: 0.4
+    duration: 0.3
   },
   {
     text: '74',
-    duration: 0.4
+    duration: 0.3
   },
   {
     text: '88',
-    duration: 0.4
+    duration: 0.3
   },
   {
     text: '98',
-    duration: 0.4
+    duration: 0.3
   },
   {
     text: '',
@@ -68,10 +70,10 @@ onMounted(async () => {
   const tl = gsap.timeline()
 
   for (const { text, duration } of progressNumbers) {
-    await tl.to('[data-gsap-preloader-progress]', { duration, text })
+    await tl.to('[data-gsap-preloader-progress]', { duration, text, delay: .1 })
   }
 
-  tl.to('[data-gsap-logo-respect]', { duration: 0, text: '', opacity: 1 }).to(
+  await tl.to('[data-gsap-logo-respect]', { duration: 0, text: '', opacity: 1 }).to(
     '[data-gsap-logo-studio]',
     {
       duration: 0,
@@ -80,17 +82,20 @@ onMounted(async () => {
     }
   )
 
-  tl.to('[data-gsap-logo-respect]', { duration: 1, text: 'Respect' }).to(
+  await tl.to('[data-gsap-logo-respect]', { duration: 1, text: 'Respect' }).to(
     '[data-gsap-logo-studio]',
     { duration: 1, text: 'Studio' },
     '-=0.8'
   )
 
-  tl.to('[data-gsap-preloader]', { duration: 0.5, yPercent: -100 })
+  emit('onFinishPreloaderTextTyping')
+  await tl.to('[data-gsap-preloader]', { duration: 0.5, yPercent: -100 })
 
-  tl.to('[data-gsap-company-name]', { duration: 0.2, opacity: 1 }, '-=0.2')
+  await tl.to('[data-gsap-company-name]', { duration: 0.2, opacity: 1 }, '-=0.2')
 
   document.body.style.overflow = 'auto'
+
+  emit('onFinishPreloader')
 
   tl.to('[data-gsap-logo-respect]', { duration: 0, opacity: 0 })
     .to('[data-gsap-logo-studio]', { duration: 0, opacity: 0 })

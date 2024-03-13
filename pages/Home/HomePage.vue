@@ -1,7 +1,13 @@
 <template>
-  <VPreloader />
+  <VPreloader 
+    @onFinishPreloader="isFinishPreloader = true"
+    @onFinishPreloaderTextTyping="isFinishPreloaderTextTyping = true"
+   />
   <div data-gsap-header>
-    <TheHeaderSection />
+    <TheHeaderSection 
+      :isFinishPreloader="isFinishPreloader"
+      :isFinishPreloaderTextTyping="isFinishPreloaderTextTyping"
+    />
   </div>
 
   <div data-gsap-header-body class="static">
@@ -21,6 +27,9 @@ import TheTrustedSection from '@/pages/Home/sections/TheTrustedSection.vue'
 import { ref, onMounted } from 'vue'
 
 const { gsap, ScrollTrigger, ScrollToPlugin } = useGsap()
+
+const isFinishPreloader = ref(false)
+const isFinishPreloaderTextTyping = ref(false)
 
 onMounted(async () => {
   ScrollTrigger.create({
