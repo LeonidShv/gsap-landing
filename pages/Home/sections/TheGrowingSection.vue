@@ -47,7 +47,7 @@ onMounted(async () => {
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: '[data-gsap-growing-title]',
-      start: '200'
+      start: 'top 90%'
     }
   })
 

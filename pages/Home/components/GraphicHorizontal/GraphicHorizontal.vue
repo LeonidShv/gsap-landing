@@ -1,5 +1,5 @@
 <template>
-  <div class="graphic-horizontal d-flex">
+  <div class="graphic-horizontal d-flex" data-gsap-graphic-horizontal>
     <div
       v-for="(
         { label, rate, width, isLeftContent }, i
@@ -8,7 +8,8 @@
       class="d-flex"
     >
       <div
-        class="graphic-horizontal__info d-flex"
+        data-gsap-graphic-horizontal-text
+        class="graphic-horizontal__info d-flex opacity-0"
         :style="{
           left: isLeftContent
             ? `calc(${100 - width * 100}% + 100px)`
@@ -23,39 +24,45 @@
         </p>
       </div>
       <div
+        data-gsap-graphic-horizontal-item
         class="graphic-horizontal__item bg--dark d-flex"
-        :style="{
-          transform: `scaleX(${width})`,
-        }"
       />
     </div>
   </div>
-
-
-  <!-- <div class="wrapper-box">
-      <div class="box">1</div>
-      <div class="box">2</div>
-      <div class="box">3</div>
-      <div class="box">4</div>
-      <div class="box">5</div>
-    </div> -->
 </template>
 
 <script setup>
 const { gsap } = useGsap()
 
-defineProps({
+const props = defineProps({
   graphicHorizontalItems: Array,
 });
 
-// onMounted(() => {
-//   const tl = gsap.timeline();
-//   tl.to(".box", {
-//     scaleX: 1,
-//     duration: .5,
-//     stagger: 0.1
-//   })
-// });
+onMounted(async () => {
+  gsap.utils.toArray("[data-gsap-graphic-horizontal-item]").forEach((item, i) => {
+    const width = props.graphicHorizontalItems[i].width;
+
+    gsap.to(item, {
+      scrollTrigger: {
+        trigger: '[data-gsap-graphic-horizontal]',
+        start: 'top 95%'
+      },
+      scaleX: width,
+      duration: 1,
+      ease: "power2.out",
+    })
+  })
+
+  gsap.to('[data-gsap-graphic-horizontal-text]', {
+    scrollTrigger: {
+      trigger: '[data-gsap-graphic-horizontal]',
+      start: 'top 95%'
+    },
+    delay: .5,
+    opacity: 1,
+    duration: .5,
+  })
+})
 </script>
 
 <style lang="scss" scoped>
@@ -93,23 +100,7 @@ defineProps({
     width: 100%;
     height: 93px;
     transform-origin: right;
+    transform: scaleX(0);
   }
 }
-
-
-// .wrapper-box {
-//   background: green;
-//   width: 500px;
-//   height: 510px;
-// }
-
-// .box {
-//   transform: scaleX(0);
-//   margin-bottom: 1px;
-//   background: blue;
-//   width: 500px;
-//   height: 100px;
-//   border: 1px solid white;
-//   transform-origin: left center;
-// }
 </style>
