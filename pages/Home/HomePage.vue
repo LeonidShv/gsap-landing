@@ -1,5 +1,6 @@
 <template>
-  <VPreloader 
+  <VPreloader
+    v-if="isFirstLoading" 
     @onFinishPreloader="isFinishPreloader = true"
     @onFinishPreloaderTextTyping="isFinishPreloaderTextTyping = true"
    />
@@ -30,6 +31,9 @@ const { gsap, ScrollTrigger, ScrollToPlugin } = useGsap()
 
 const isFinishPreloader = ref(false)
 const isFinishPreloaderTextTyping = ref(false)
+const isFirstLoading = computed(() => {
+  return !localStorage.getItem('isFirstLoading')
+})
 
 onMounted(async () => {
   ScrollTrigger.create({
@@ -45,6 +49,8 @@ onMounted(async () => {
     pin: true,
     pinSpacing: false
   })
+
+  localStorage.setItem('isFirstLoading', '1')
 })
 
 const navigation = ref([

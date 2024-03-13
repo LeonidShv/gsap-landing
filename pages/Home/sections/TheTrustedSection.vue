@@ -15,7 +15,7 @@
       provide maximum business value.
     </p>
 
-    <div class="d-flex trusted__cards">
+    <div class="d-flex trusted__cards" data-gsap-trusted-cards>
       <TrustedCard
         v-for="(
           {
@@ -86,6 +86,12 @@ onMounted(async () => {
     scrollTrigger
   })
 
+  gsap.to('[data-gsap-trusted-cards]', {
+    duration: .2,
+    opacity: 1,
+    scrollTrigger
+  })
+
   gsap.to('[data-gsap-trusted-divider-1]', {
     duration: 1,
     scaleX: 1,
@@ -99,6 +105,7 @@ onMounted(async () => {
     ease: "power1.out",
     scrollTrigger
   })
+  
 })
 
 const trustedCards = ref([
@@ -157,6 +164,7 @@ const trustedCards = ref([
 
   &__cards {
     overflow: hidden;
+    opacity: 0;
   }
 
   &__info {
