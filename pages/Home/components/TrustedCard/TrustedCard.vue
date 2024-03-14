@@ -34,7 +34,7 @@ const props = defineProps({
   buttonType: String,
 });
 
-defineEmits(['onMouseEnter', 'onMouseLeaver'])
+defineEmits(["onMouseEnter", "onMouseLeaver"]);
 
 const classObject = computed(() => ({
   "trusted-card--is-active": props.isActive,
@@ -52,7 +52,7 @@ const classObject = computed(() => ({
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: transform .3s;
+  transition: transform 0.3s;
 
   &::after {
     content: "";

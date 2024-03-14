@@ -1,10 +1,18 @@
 <template>
   <section class="consistent">
     <h2 class="consistent__title font-s-small-title c--dark">
-      <span class="opacity-0" data-gsap-consistent-title-1>Consitent leads</span> <span data-gsap-consistent-title-2 class="opacity-0">flow to streamline Your business growth.</span>
+      <span class="opacity-0" data-gsap-consistent-title-1
+        >Consitent leads</span
+      >
+      <span data-gsap-consistent-title-2 class="opacity-0"
+        >flow to streamline Your business growth.</span
+      >
     </h2>
     <div class="consistent__graphic-vertical">
-      <p data-gsap-consistent-text class="consistent__text opacity-0 font-s-base c--dark">
+      <p
+        data-gsap-consistent-text
+        class="consistent__text opacity-0 font-s-base c--dark"
+      >
         We combine disruptive marketing techniques with proven tech solutions to
         provide maximum business value.
       </p>
@@ -22,37 +30,45 @@
 import GraphicVertical from "@/pages/Home/components/GraphicVertical/GraphicVertical.vue";
 import GraphicHorizontal from "@/pages/Home/components/GraphicHorizontal/GraphicHorizontal.vue";
 
-const { gsap } = useGsap()
+const { gsap } = useGsap();
 
 onMounted(async () => {
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '[data-gsap-consistent-title-1]',
-      start: 'top 95%'
-    }
-  })
+      trigger: "[data-gsap-consistent-title-1]",
+      start: "top 95%",
+    },
+  });
 
-  tl.to('[data-gsap-consistent-title-2]', {
+  tl.to("[data-gsap-consistent-title-2]", {
     duration: 0,
-    text: '', 
-    opacity: 1
-  })
+    text: "",
+    opacity: 1,
+  });
 
-  tl.to('[data-gsap-consistent-title-1]', {
-    duration: .2,
-    opacity: 1
-  })
+  tl.to("[data-gsap-consistent-title-1]", {
+    duration: 0.2,
+    opacity: 1,
+  });
 
-  tl.to('[data-gsap-consistent-title-2]', {
-    duration: 1,
-    text: 'flow to streamline Your business growth.'
-  }, '-=0.1')
+  tl.to(
+    "[data-gsap-consistent-title-2]",
+    {
+      duration: 1,
+      text: "flow to streamline Your business growth.",
+    },
+    "-=0.1",
+  );
 
-  tl.to('[data-gsap-consistent-text]', {
-    duration: 1,
-    opacity: 1
-  }, '-=1')
-})
+  tl.to(
+    "[data-gsap-consistent-text]",
+    {
+      duration: 1,
+      opacity: 1,
+    },
+    "-=1",
+  );
+});
 
 const graphicVerticalItems = ref([
   {

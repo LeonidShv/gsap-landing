@@ -1,11 +1,11 @@
 <template>
-    <VPreloader
-      v-if="isFirstLoading" 
-      @onFinishPreloader="isFinishPreloader = true"
-      @onFinishPreloaderTextTyping="isFinishPreloaderTextTyping = true"
-    />
+  <VPreloader
+    v-if="isFirstLoading"
+    @onFinishPreloader="isFinishPreloader = true"
+    @onFinishPreloaderTextTyping="isFinishPreloaderTextTyping = true"
+  />
   <div data-gsap-header>
-    <TheHeaderSection 
+    <TheHeaderSection
       :isFinishPreloader="isFinishPreloader"
       :isFinishPreloaderTextTyping="isFinishPreloaderTextTyping"
     />
@@ -20,71 +20,71 @@
 </template>
 
 <script setup>
-import TheHeaderSection from '@/pages/Home/sections/TheHeaderSection.vue'
-import TheGrowingSection from '@/pages/Home/sections/TheGrowingSection.vue'
-import TheConsistentSection from '@/pages/Home/sections/TheConsistentSection.vue'
-import TheTrustedSection from '@/pages/Home/sections/TheTrustedSection.vue'
+import TheHeaderSection from "@/pages/Home/sections/TheHeaderSection.vue";
+import TheGrowingSection from "@/pages/Home/sections/TheGrowingSection.vue";
+import TheConsistentSection from "@/pages/Home/sections/TheConsistentSection.vue";
+import TheTrustedSection from "@/pages/Home/sections/TheTrustedSection.vue";
 
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
-const { ScrollTrigger } = useGsap()
+const { ScrollTrigger } = useGsap();
 
-const isFinishPreloader = ref(false)
-const isFinishPreloaderTextTyping = ref(false)
+const isFinishPreloader = ref(false);
+const isFinishPreloaderTextTyping = ref(false);
 const isFirstLoading = computed(() => {
-  return !localStorage.getItem('isFirstLoading')
-})
+  return !localStorage.getItem("isFirstLoading");
+});
 
 onMounted(async () => {
   ScrollTrigger.create({
-    trigger: '[data-gsap-header]',
-    start: 'top top',
+    trigger: "[data-gsap-header]",
+    start: "top top",
     pin: true,
-    pinSpacing: false
-  })
+    pinSpacing: false,
+  });
 
   ScrollTrigger.create({
-    trigger: '[data-gsap-header-body]',
-    start: 'top top',
+    trigger: "[data-gsap-header-body]",
+    start: "top top",
     pin: true,
-    pinSpacing: false
-  })
+    pinSpacing: false,
+  });
 
-  localStorage.setItem('isFirstLoading', '1')
-})
+  localStorage.setItem("isFirstLoading", "1");
+});
 
 const navigation = ref([
   {
-    label: 'Services',
-    url: '#',
-    offset: false
+    label: "Services",
+    url: "#",
+    offset: false,
   },
   {
-    label: 'Case Studies',
-    url: '#',
-    offset: false
+    label: "Case Studies",
+    url: "#",
+    offset: false,
   },
   {
-    label: 'Blog',
-    url: '#',
-    offset: false
+    label: "Blog",
+    url: "#",
+    offset: false,
   },
   {
-    label: 'About us',
-    url: '#',
-    offset: false
+    label: "About us",
+    url: "#",
+    offset: false,
   },
   {
     label: "We're hiring",
-    url: '#',
-    offset: true
+    url: "#",
+    offset: true,
   },
   {
-    label: 'Contacts',
-    url: '#',
-    offset: false
-  }
-])
+    label: "Contacts",
+    url: "#",
+    offset: false,
+  },
+]);
 </script>
 
 <style lang="scss">

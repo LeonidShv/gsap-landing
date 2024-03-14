@@ -13,7 +13,7 @@
     :effect="'fade'"
     :autoplay="{
       delay: 1000,
-      disableOnInteraction: false
+      disableOnInteraction: false,
     }"
     :modules="modules"
     class="mySwiper"
@@ -26,18 +26,18 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay, EffectFade } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/effect-fade'
+import { ref } from "vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-fade";
 
 defineProps({
   slides: Array,
-  isFinishPreloader: Boolean
-})
+  isFinishPreloader: Boolean,
+});
 
-const modules = ref([Autoplay, EffectFade])
+const modules = ref([Autoplay, EffectFade]);
 </script>
 
 <style lang="scss">

@@ -2,15 +2,24 @@
   <section class="trusted p-20 d-flex">
     <VDivider data-gsap-trusted-divider-1 />
     <div class="trusted__info">
-      <h2 data-gsap-trusted-title class="trusted__title c--red font-s-mid-title opacity-0">
+      <h2
+        data-gsap-trusted-title
+        class="trusted__title c--red font-s-mid-title opacity-0"
+      >
         Trusted long-term partner
       </h2>
-      <p data-gsap-trusted-text class="trusted__sub-title c--red font-s-sub-title opacity-0">
+      <p
+        data-gsap-trusted-text
+        class="trusted__sub-title c--red font-s-sub-title opacity-0"
+      >
         For leading B2B tech and service companies
       </p>
     </div>
     <VDivider data-gsap-trusted-divider-2 />
-    <p data-gsap-trusted-text class="trusted__text c--red font-s-base opacity-0">
+    <p
+      data-gsap-trusted-text
+      class="trusted__text c--red font-s-base opacity-0"
+    >
       We combine disruptive marketing techniques with proven tech solutions to
       provide maximum business value.
     </p>
@@ -32,8 +41,8 @@
           },
           i
         ) in trustedCards"
-        @mouseenter="onMouseHandler(i)" 
-        @mouseleave="onMouseHandler(0)" 
+        @mouseenter="onMouseHandler(i)"
+        @mouseleave="onMouseHandler(0)"
         :background="background"
         :isActive="isActive"
         :isHoverMoveLeft="isHoverMoveLeft"
@@ -54,59 +63,61 @@
 import { ref } from "vue";
 import TrustedCard from "@/pages/Home/components/TrustedCard/TrustedCard.vue";
 
-const { gsap } = useGsap()
+const { gsap } = useGsap();
 
 const scrollTrigger = {
-  trigger: '[data-gsap-trusted-title]',
-  start: 'top 95%'
-}
+  trigger: "[data-gsap-trusted-title]",
+  start: "top 95%",
+};
 
 function onMouseHandler(index) {
-  trustedCards.value = trustedCards.value.map((card) => ({...card, isActive: false}))
+  trustedCards.value = trustedCards.value.map((card) => ({
+    ...card,
+    isActive: false,
+  }));
   trustedCards.value[index].isActive = true;
 }
 
 onMounted(async () => {
-  gsap.to('[data-gsap-trusted-title]', {
+  gsap.to("[data-gsap-trusted-title]", {
     duration: 0,
-    text: '', 
+    text: "",
     opacity: 1,
-    scrollTrigger
-  })
+    scrollTrigger,
+  });
 
-  gsap.to('[data-gsap-trusted-title]', {
+  gsap.to("[data-gsap-trusted-title]", {
     duration: 1,
-    text: 'Trusted long-term partner',
-    scrollTrigger
-  })
+    text: "Trusted long-term partner",
+    scrollTrigger,
+  });
 
-  gsap.to('[data-gsap-trusted-text]', {
+  gsap.to("[data-gsap-trusted-text]", {
     duration: 1,
     opacity: 1,
-    scrollTrigger
-  })
+    scrollTrigger,
+  });
 
-  gsap.to('[data-gsap-trusted-cards]', {
-    duration: .2,
+  gsap.to("[data-gsap-trusted-cards]", {
+    duration: 0.2,
     opacity: 1,
-    scrollTrigger
-  })
+    scrollTrigger,
+  });
 
-  gsap.to('[data-gsap-trusted-divider-1]', {
+  gsap.to("[data-gsap-trusted-divider-1]", {
     duration: 1,
     scaleX: 1,
     ease: "power4.out",
-    scrollTrigger
-  })
+    scrollTrigger,
+  });
 
-  gsap.to('[data-gsap-trusted-divider-2]', {
+  gsap.to("[data-gsap-trusted-divider-2]", {
     duration: 1,
     scaleX: 1,
     ease: "power1.out",
-    scrollTrigger
-  })
-  
-})
+    scrollTrigger,
+  });
+});
 
 const trustedCards = ref([
   {

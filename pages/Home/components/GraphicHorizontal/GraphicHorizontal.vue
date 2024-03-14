@@ -32,37 +32,39 @@
 </template>
 
 <script setup>
-const { gsap } = useGsap()
+const { gsap } = useGsap();
 
 const props = defineProps({
   graphicHorizontalItems: Array,
 });
 
 onMounted(async () => {
-  gsap.utils.toArray("[data-gsap-graphic-horizontal-item]").forEach((item, i) => {
-    const width = props.graphicHorizontalItems[i].width;
+  gsap.utils
+    .toArray("[data-gsap-graphic-horizontal-item]")
+    .forEach((item, i) => {
+      const width = props.graphicHorizontalItems[i].width;
 
-    gsap.to(item, {
-      scrollTrigger: {
-        trigger: '[data-gsap-graphic-horizontal]',
-        start: 'top 95%'
-      },
-      scaleX: width,
-      duration: 1,
-      ease: "power2.out",
-    })
-  })
+      gsap.to(item, {
+        scrollTrigger: {
+          trigger: "[data-gsap-graphic-horizontal]",
+          start: "top 95%",
+        },
+        scaleX: width,
+        duration: 1,
+        ease: "power2.out",
+      });
+    });
 
-  gsap.to('[data-gsap-graphic-horizontal-text]', {
+  gsap.to("[data-gsap-graphic-horizontal-text]", {
     scrollTrigger: {
-      trigger: '[data-gsap-graphic-horizontal]',
-      start: 'top 95%'
+      trigger: "[data-gsap-graphic-horizontal]",
+      start: "top 95%",
     },
-    delay: .5,
+    delay: 0.5,
     opacity: 1,
-    duration: .5,
-  })
-})
+    duration: 0.5,
+  });
+});
 </script>
 
 <style lang="scss" scoped>

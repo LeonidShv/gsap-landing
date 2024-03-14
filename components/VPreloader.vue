@@ -28,79 +28,84 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted } from "vue";
 
-const emit = defineEmits(['onFinishPreloader', 'onFinishPreloaderTextTyping'])
+const emit = defineEmits(["onFinishPreloader", "onFinishPreloaderTextTyping"]);
 
-const { gsap } = useGsap()
+const { gsap } = useGsap();
 
 const progressNumbers = [
   {
-    text: '04',
-    duration: 0.3
+    text: "04",
+    duration: 0.3,
   },
   {
-    text: '19',
-    duration: 0.3
+    text: "19",
+    duration: 0.3,
   },
   {
-    text: '23',
-    duration: 0.3
+    text: "23",
+    duration: 0.3,
   },
   {
-    text: '74',
-    duration: 0.3
+    text: "74",
+    duration: 0.3,
   },
   {
-    text: '88',
-    duration: 0.3
+    text: "88",
+    duration: 0.3,
   },
   {
-    text: '98',
-    duration: 0.3
+    text: "98",
+    duration: 0.3,
   },
   {
-    text: '',
-    duration: 0
-  }
-]
+    text: "",
+    duration: 0,
+  },
+];
 
 onMounted(async () => {
-  document.body.style.overflow = 'hidden'
-  const tl = gsap.timeline()
+  document.body.style.overflow = "hidden";
+  const tl = gsap.timeline();
 
   for (const { text, duration } of progressNumbers) {
-    await tl.to('[data-gsap-preloader-progress]', { duration, text, delay: .1 })
+    await tl.to("[data-gsap-preloader-progress]", {
+      duration,
+      text,
+      delay: 0.1,
+    });
   }
 
-  await tl.to('[data-gsap-logo-respect]', { duration: 0, text: '', opacity: 1 }).to(
-    '[data-gsap-logo-studio]',
-    {
+  await tl
+    .to("[data-gsap-logo-respect]", { duration: 0, text: "", opacity: 1 })
+    .to("[data-gsap-logo-studio]", {
       duration: 0,
-      text: '',
-      opacity: 1
-    }
-  )
+      text: "",
+      opacity: 1,
+    });
 
-  await tl.to('[data-gsap-logo-respect]', { duration: 1, text: 'Respect' }).to(
-    '[data-gsap-logo-studio]',
-    { duration: 1, text: 'Studio' },
-    '-=0.8'
-  )
+  await tl
+    .to("[data-gsap-logo-respect]", { duration: 1, text: "Respect" })
+    .to("[data-gsap-logo-studio]", { duration: 1, text: "Studio" }, "-=0.8");
 
-  emit('onFinishPreloaderTextTyping')
-  await tl.to('[data-gsap-preloader]', { duration: 0.5, yPercent: -100 })
+  emit("onFinishPreloaderTextTyping");
+  await tl.to("[data-gsap-preloader]", { duration: 0.5, yPercent: -100 });
 
-  await tl.to('[data-gsap-company-name]', { duration: 0.2, opacity: 1 }, '-=0.2')
+  await tl.to(
+    "[data-gsap-company-name]",
+    { duration: 0.2, opacity: 1 },
+    "-=0.2",
+  );
 
-  document.body.style.overflow = 'auto'
+  document.body.style.overflow = "auto";
 
-  emit('onFinishPreloader')
+  emit("onFinishPreloader");
 
-  tl.to('[data-gsap-logo-respect]', { duration: 0, opacity: 0 })
-    .to('[data-gsap-logo-studio]', { duration: 0, opacity: 0 })
-    .to('[data-gsap-company-name]', { duration: 0, opacity: 0 })
-})
+  tl.to("[data-gsap-logo-respect]", { duration: 0, opacity: 0 })
+    .to("[data-gsap-logo-studio]", { duration: 0, opacity: 0 })
+    .to("[data-gsap-company-name]", { duration: 0, opacity: 0 });
+});
 </script>
 
 <style scoped lang="scss">
@@ -128,13 +133,13 @@ onMounted(async () => {
     position: absolute;
   }
 
-   /* TODO: DRY */
+  /* TODO: DRY */
   &__logo--rotate {
     writing-mode: vertical-rl;
     top: 74px;
 
     &::before {
-      content: '.';
+      content: ".";
       font-size: var(--font-s-item);
       position: absolute;
       top: -10px;

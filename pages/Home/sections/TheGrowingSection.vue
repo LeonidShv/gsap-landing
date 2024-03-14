@@ -16,63 +16,63 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted } from "vue";
 
-const { gsap } = useGsap()
+const { gsap } = useGsap();
 
 const growingTitleText = ref([
   {
-    text: 'Growing',
-    duration: '0.4'
+    text: "Growing",
+    duration: "0.4",
   },
   {
-    text: 'businesses by',
-    duration: '0.5'
+    text: "businesses by",
+    duration: "0.5",
   },
   {
-    text: 'building',
-    duration: '0.4'
+    text: "building",
+    duration: "0.4",
   },
   {
-    text: 'relationships',
-    duration: '0.5'
-  }
-])
+    text: "relationships",
+    duration: "0.5",
+  },
+]);
 
 onMounted(async () => {
   const tl = gsap.timeline({
     scrollTrigger: {
-      trigger: '[data-gsap-growing-title]',
-      start: 'top 90%'
-    }
-  })
+      trigger: "[data-gsap-growing-title]",
+      start: "top 90%",
+    },
+  });
 
   for (let i = 0; i < growingTitleText.value.length; i++) {
     tl.to(`[data-gsap="growing-title-${i}"]`, {
       duration: 0,
       opacity: 1,
-      text: ''
-    })
+      text: "",
+    });
   }
 
   for (let i = 0; i < growingTitleText.value.length; i++) {
-    const { duration, text } = growingTitleText.value[i]
+    const { duration, text } = growingTitleText.value[i];
 
     tl.to(`[data-gsap="growing-title-${i}"]`, {
       duration,
       text,
-    })
+    });
   }
 
   tl.to(
-    '[data-gsap-growing-text]',
+    "[data-gsap-growing-text]",
     {
       opacity: 1,
-      duration: 0.3
+      duration: 0.3,
     },
-    '-=0.15'
-  )
-})
+    "-=0.15",
+  );
+});
 </script>
 
 <style scoped lang="scss">

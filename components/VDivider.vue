@@ -5,7 +5,7 @@
 <style lang="scss" scoped>
 .divider {
   height: 1px;
-  background: var(--red);  
+  background: var(--red);
   transform: scaleX(0);
   transform-origin: left;
 }
