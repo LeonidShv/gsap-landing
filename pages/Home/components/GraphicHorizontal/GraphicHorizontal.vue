@@ -1,5 +1,5 @@
 <template>
-  <div class="graphic-horizontal d-flex">
+  <div class="graphic-horizontal d-flex" data-gsap-graphic-horizontal>
     <div
       v-for="(
         { label, rate, width, isLeftContent }, i
@@ -8,7 +8,8 @@
       class="d-flex"
     >
       <div
-        class="graphic-horizontal__info d-flex"
+        data-gsap-graphic-horizontal-text
+        class="graphic-horizontal__info d-flex opacity-0"
         :style="{
           left: isLeftContent
             ? `calc(${100 - width * 100}% + 100px)`
@@ -23,18 +24,46 @@
         </p>
       </div>
       <div
+        data-gsap-graphic-horizontal-item
         class="graphic-horizontal__item bg--dark d-flex"
-        :style="{
-          transform: `scaleX(${width})`,
-        }"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-defineProps({
+const { gsap } = useGsap();
+
+const props = defineProps({
   graphicHorizontalItems: Array,
+});
+
+onMounted(async () => {
+  gsap.utils
+    .toArray("[data-gsap-graphic-horizontal-item]")
+    .forEach((item, i) => {
+      const width = props.graphicHorizontalItems[i].width;
+
+      gsap.to(item, {
+        scrollTrigger: {
+          trigger: "[data-gsap-graphic-horizontal]",
+          start: "top 95%",
+        },
+        scaleX: width,
+        duration: 1,
+        ease: "power2.out",
+      });
+    });
+
+  gsap.to("[data-gsap-graphic-horizontal-text]", {
+    scrollTrigger: {
+      trigger: "[data-gsap-graphic-horizontal]",
+      start: "top 95%",
+    },
+    delay: 0.5,
+    opacity: 1,
+    duration: 0.5,
+  });
 });
 </script>
 
@@ -73,6 +102,7 @@ defineProps({
     width: 100%;
     height: 93px;
     transform-origin: right;
+    transform: scaleX(0);
   }
 }
 </style>

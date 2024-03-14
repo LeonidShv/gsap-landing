@@ -21,53 +21,59 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-
 const props = defineProps({
   background: String,
-  isHover: Boolean,
   number: String,
   title: String,
   texts: Array,
   icon: String,
+  isActive: Boolean,
+  isHoverMoveLeft: Boolean,
   buttonLabel: String,
   buttonUrl: String,
   buttonType: String,
 });
 
-const classObject = ref({
-  "trusted-card--is-hover": props.isHover,
+defineEmits(["onMouseEnter", "onMouseLeaver"]);
+
+const classObject = computed(() => ({
+  "trusted-card--is-active": props.isActive,
+  "trusted-card--is-hover": props.isHoverMoveLeft,
   [props.background]: true,
   "trusted-card": true,
-});
+}));
 </script>
 
 <style scoped lang="scss">
 .trusted-card {
   padding: 40px;
   min-width: 70%;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark);
+    opacity: 0.6;
+  }
+
+  &--is-active {
+    &::after {
+      display: none;
+    }
+  }
 
   &--is-hover {
-    transition: transform 0.3s;
-    position: relative;
-
     &:hover {
       transform: translateX(calc(-60% + 20px));
-
-      &::after {
-        opacity: 0;
-      }
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--dark);
-      opacity: 0.6;
     }
   }
 
@@ -80,7 +86,6 @@ const classObject = ref({
   &__info {
     flex-direction: column;
     gap: 35px;
-    margin-bottom: 106px;
   }
 
   &__title {
@@ -88,6 +93,7 @@ const classObject = ref({
   }
 
   &__actions {
+    margin-top: auto;
     align-items: end;
   }
 
