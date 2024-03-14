@@ -18,7 +18,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const { gsap, TextPlugin, ScrollTrigger } = useGsap()
+const { gsap } = useGsap()
 
 const growingTitleText = ref([
   {

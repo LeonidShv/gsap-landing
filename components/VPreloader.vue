@@ -4,7 +4,7 @@
   </div>
 
   <header class="preloader__logo-wrapper d-flex justify-s-b p-20">
-    <div>
+    <div class="relative">
       <p
         data-gsap-logo-respect
         class="preloader__logo preloader__logo--default font-s-item c--red"
@@ -32,7 +32,7 @@ import { onMounted } from 'vue'
 
 const emit = defineEmits(['onFinishPreloader', 'onFinishPreloaderTextTyping'])
 
-const { gsap, TextPlugin } = useGsap()
+const { gsap } = useGsap()
 
 const progressNumbers = [
   {
@@ -123,23 +123,15 @@ onMounted(async () => {
     box-shadow: rgba(0, 0, 0, 0.25);
   }
 
-  /* TODO: DRY */
-
   &__logo-wrapper {
-    width: 100%;
     z-index: 2;
     position: absolute;
   }
 
-  &__logo--default {
-    top: 20px;
-    left: 20px;
-  }
-
+   /* TODO: DRY */
   &__logo--rotate {
     writing-mode: vertical-rl;
-    left: 20px;
-    top: 82px;
+    top: 74px;
 
     &::before {
       content: '.';

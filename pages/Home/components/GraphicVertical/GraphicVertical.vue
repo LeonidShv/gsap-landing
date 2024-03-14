@@ -15,7 +15,7 @@
         data-gsap-graphic-vertical-item
         class="graphic-vertical__item bg--red"
         :style="{
-          width: `calc((100vw - 40px - ${graphicVerticalItems.length - 1}px) / ${graphicVerticalItems.length})`,
+          width: `calc((100vw - 40px - ${graphicVerticalItems.length - 1}px) / ${graphicVerticalItems.length})`
         }"
       />
     </div>
@@ -24,34 +24,32 @@
 
 <script setup>
 const props = defineProps({
-  graphicVerticalItems: Array,
-});
+  graphicVerticalItems: Array
+})
 
 const { gsap } = useGsap()
 
 onMounted(async () => {
-  gsap.utils.toArray("[data-gsap-graphic-vertical-item]").forEach((item, i) => {
-    const height = props.graphicVerticalItems[i].height;
+  const scrollTrigger = {
+    trigger: '[data-gsap-graphic-vertical]',
+    start: 'top 95%'
+  }
+  gsap.utils.toArray('[data-gsap-graphic-vertical-item]').forEach((item, i) => {
+    const height = props.graphicVerticalItems[i].height
 
     gsap.to(item, {
       scaleY: height,
       duration: 1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: '[data-gsap-graphic-vertical]',
-        start: 'top 95%'
-      }
+      ease: 'power2.out',
+      scrollTrigger
     })
   })
 
   gsap.to('[data-gsap-graphic-vertical-rate]', {
-    delay: .5,
+    delay: 0.5,
     opacity: 1,
-    duration: .5,
-    scrollTrigger: {
-      trigger: '[data-gsap-graphic-vertical]',
-      start: 'top 95%'
-    }
+    duration: 0.5,
+    scrollTrigger
   })
 })
 </script>

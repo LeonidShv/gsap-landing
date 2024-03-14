@@ -74,10 +74,6 @@ body {
 .font-s-big-title {
   font-size: var(--font-size-big-title);
   font-weight: 400;
-
-  @media (max-width: 1600px) {
-    font-size: var(--font-size-mid-title);
-  }
 }
 .font-s-small-title {
   font-size: var(--font-size-small-title);
@@ -138,4 +134,8 @@ body {
 
 .opacity-0 {
   opacity: 0;
+}
+
+.relative {
+  position: relative;
 }

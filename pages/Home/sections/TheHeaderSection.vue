@@ -4,7 +4,7 @@
     class="header p-20"
   >
     <div class="header__logo-wrapper d-flex justify-s-b">
-      <div>
+      <div class="relative">
         <p class="header__logo header__logo--default font-s-item c--red">
           Respect
         </p>
@@ -90,7 +90,7 @@ const isShowShadow = computed(() => {
   position: relative;
   height: calc(100vh - 87px);
 
-  &--scrolled {
+   &--scrolled {
     &::after {
       content: '';
       width: 100%;
@@ -115,16 +115,9 @@ const isShowShadow = computed(() => {
   }
 
   /* TODO: DRY */
-
-  &__logo--default {
-    top: 20px;
-    left: 20px;
-  }
-
   &__logo--rotate {
     writing-mode: vertical-rl;
-    left: 20px;
-    top: 82px;
+    top: 74px;
 
     &::before {
       content: '.';
